@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.palladiosimulator</groupId>
+	<artifactId>eclipse-parent</artifactId>	
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>Palladio Maven Tycho Parent</name>
+	<description>A common parent POM for Maven Tycho based builds of Palladio related Eclipse extensions.</description>
+	<url>http://www.palladiosimulator.org</url>
+	<packaging>pom</packaging>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Stephan Seifermann</name>
+			<email>seifermann@fzi.de</email>
+			<organization>FZI Research Center for Information Technology</organization>
+			<organizationUrl>http://www.fzi.de</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/palladiosimulator/palladio-build-mavenparent.git</connection>
+		<developerConnection>scm:git:ssh://github.com/palladiosimulator/palladio-build-mavenparent.git</developerConnection>
+		<url>http://github.com/palladiosimulator/palladio-build-mavenparent/tree/master</url>
+	</scm>
+
+	<profiles>
+
+		<!-- Build configuration of parent POM itself -->
+		<profile>
+			<id>local-build</id>
+			<activation>
+				<file>
+					<exists>localBuild12464</exists>
+				</file>
+			</activation>
+			
+			<distributionManagement>
+				<snapshotRepository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Profiles to be inherited -->
+
+		<profile>
+			<id>nightly</id>
+			<activation>
+				<property>
+					<name>!release</name>
+				</property>
+			</activation>
+			<properties>
+				<org.palladiosimulator.maven.tychotprefresh.filter.0>nightly</org.palladiosimulator.maven.tychotprefresh.filter.0>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>release</name>
+				</property>
+			</activation>
+			<properties>
+				<org.palladiosimulator.maven.tychotprefresh.filter.0>release</org.palladiosimulator.maven.tychotprefresh.filter.0>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>tycho-build</id>
+			<activation>
+				<file>
+					<missing>localBuild12464</missing>
+				</file>
+			</activation>
+			<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+				<java.version>1.8</java.version>
+				<maven.compiler.target>1.8</maven.compiler.target>
+				<maven.compiler.source>1.8</maven.compiler.source>
+				<xtext.version>2.12.0</xtext.version>
+				<tycho.version>1.1.0</tycho.version>
+				<org.palladiosimulator.maven.tychotprefresh.version>0.2.0</org.palladiosimulator.maven.tychotprefresh.version>
+				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>org.palladiosimulator:target-platform-base:0.1.0:oxygen:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
+				<org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>org.palladiosimulator</org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>
+				<org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>target-platform-merged-temporary</org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>
+				<org.palladiosimulator.maven.tychotprefresh.tpproject.version>1.0.0</org.palladiosimulator.maven.tychotprefresh.tpproject.version>
+				<org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>merged-temporary</org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>
+				<org.palladiosimulator.maven.tychotprefresh.tpproject.type>target</org.palladiosimulator.maven.tychotprefresh.tpproject.type>
+			</properties>
+			<build>
+
+				<plugins>
+					<plugin>
+						<groupId>org.palladiosimulator</groupId>
+						<artifactId>tycho-tp-refresh-maven-plugin</artifactId>
+						<version>${org.palladiosimulator.maven.tychotprefresh.version}</version>
+						<executions>
+							<execution>
+								<id>target-platform-copy</id>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.7.0</version>
+						<executions> 
+							<execution> 
+								<id>compiletests</id> 
+								<phase>test-compile</phase> 
+								<goals> 
+									<goal>testCompile</goal> 
+								</goals> 
+							</execution> 
+						</executions> 
+						<configuration>
+							<compilerId>eclipse</compilerId>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
+							<optimize>true</optimize>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.codehaus.plexus</groupId>
+								<artifactId>plexus-compiler-eclipse</artifactId>
+								<version>2.8.2</version>
+								<scope>runtime</scope>
+							</dependency>
+						</dependencies>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>xtend-maven-plugin</artifactId>
+						<version>${xtext.version}</version>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>xtend-gen</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>gen-clean</id>
+								<phase>clean</phase>
+								<goals>
+									<goal>clean</goal>
+								</goals>
+								<configuration>
+									<filesets>
+										<fileset>
+											<directory>xtend-gen</directory>
+										</fileset>
+									</filesets>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-maven-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<extensions>true</extensions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho.version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>${org.palladiosimulator.maven.tychotprefresh.tpproject.groupId}</groupId>
+									<artifactId>${org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId}</artifactId>
+									<version>${org.palladiosimulator.maven.tychotprefresh.tpproject.version}</version>
+									<classifier>${org.palladiosimulator.maven.tychotprefresh.tpproject.classifier}</classifier> 
+								</artifact>
+							</target>
+							<environments>
+								<environment>
+									<os>linux</os>
+									<ws>gtk</ws>
+									<arch>x86</arch>
+								</environment>
+								<environment>
+									<os>linux</os>
+									<ws>gtk</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>win32</os>
+									<ws>win32</ws>
+									<arch>x86</arch>
+								</environment>
+								<environment>
+									<os>win32</os>
+									<ws>win32</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>macosx</os>
+									<ws>cocoa</ws>
+									<arch>x86_64</arch>
+								</environment>
+							</environments>
+						</configuration>
+					</plugin>
+
+
+				</plugins>
+			</build>
+
+		</profile>
+
+		<!-- OS specific properties -->
+		<profile>
+			<id>win32-x86</id>
+			<activation>
+				<os>
+					<arch>x86</arch>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<target.platform.os>win32</target.platform.os>
+				<target.platform.ws>win32</target.platform.ws>
+				<target.platform.arch>x86</target.platform.arch>
+			</properties>
+		</profile>
+		<profile>
+			<id>win32-amd64</id>
+			<activation>
+				<os>
+					<arch>amd64</arch>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<target.platform.os>win32</target.platform.os>
+				<target.platform.ws>win32</target.platform.ws>
+				<target.platform.arch>x86_64</target.platform.arch>
+			</properties>
+		</profile>
+		<profile>
+			<id>linux-x86</id>
+			<activation>
+				<os>
+					<arch>i386</arch>
+					<family>unix</family>
+					<name>linux</name>
+				</os>
+			</activation>
+			<properties>
+				<target.platform.os>linux</target.platform.os>
+				<target.platform.ws>gtk</target.platform.ws>
+				<target.platform.arch>x86</target.platform.arch>
+			</properties>
+		</profile>
+		<profile>
+			<id>linux-amd64</id>
+			<activation>
+				<os>
+					<arch>amd64</arch>
+					<family>unix</family>
+					<name>linux</name>
+				</os>
+			</activation>
+			<properties>
+				<target.platform.os>linux</target.platform.os>
+				<target.platform.ws>gtk</target.platform.ws>
+				<target.platform.arch>x86_64</target.platform.arch>
+			</properties>
+		</profile>
+		<profile>
+			<id>cocoa-macosx-x86_64</id>
+			<activation>
+				<os>
+					<arch>x86_64</arch>
+					<family>unix</family>
+					<name>mac os x</name>
+				</os>
+			</activation>
+			<properties>
+				<target.platform.os>macosx</target.platform.os>
+				<target.platform.ws>cocoa</target.platform.ws>
+				<target.platform.arch>x86_64</target.platform.arch>
+			</properties>
+		</profile>
+
+	</profiles>
+
+</project>
