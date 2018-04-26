@@ -164,7 +164,7 @@
 				</file>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.version>0.2.1</org.palladiosimulator.maven.tychotprefresh.version>
+				<org.palladiosimulator.maven.tychotprefresh.version>0.2.2</org.palladiosimulator.maven.tychotprefresh.version>
 				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>org.palladiosimulator:target-platform-base:0.1.2:oxygen:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
 				<org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>org.palladiosimulator</org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>
 				<org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>target-platform-merged-temporary</org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>
@@ -247,6 +247,7 @@
 				<maven.compiler.target>1.8</maven.compiler.target>
 				<maven.compiler.source>1.8</maven.compiler.source>
 				<xtext.version>2.12.0</xtext.version>
+				<jacoco.version>0.8.1</jacoco.version>
 			</properties>
 			<build>
 				<plugins>
@@ -367,6 +368,21 @@
 						<artifactId>tycho-maven-plugin</artifactId>
 						<version>${tycho.version}</version>
 						<extensions>true</extensions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco.version}</version>
+						<executions>
+							<execution>
+								<id>jacoco-prepare</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 
 					<plugin>
