@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>eclipse-parent</artifactId>	
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.1.5</version>
 
 	<name>Palladio Maven Tycho Parent</name>
 	<description>A common parent POM for Maven Tycho based builds of Palladio related Eclipse extensions.</description>
