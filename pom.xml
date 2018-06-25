@@ -250,6 +250,7 @@
 				<jacoco.version>0.8.1</jacoco.version>
 			</properties>
 			<build>
+			
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -401,6 +402,53 @@
 				</plugins>
 			</build>
 
+		</profile>
+
+		<profile>
+			<id>tycho-javadoc</id>
+			<activation>
+				<file>
+					<missing>ignoreJavaDocSettings43547</missing>
+				</file>
+			</activation>
+			<properties>
+				<org.palladiosimulator.javadocplugin.version>1.1.1</org.palladiosimulator.javadocplugin.version>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.palladiosimulator</groupId>
+							<artifactId>tycho-document-bundle-plugin</artifactId>
+							<version>${org.palladiosimulator.javadocplugin.version}</version>
+							<executions>
+								<execution>
+									<id>eclipse-javadoc</id>
+									<phase>generate-resources</phase>
+									<goals>
+										<goal>javadoc</goal>
+									</goals>
+									<configuration>
+										<exportOnly>false</exportOnly>
+										<skipTocGen>true</skipTocGen>
+										<javadocOptions>
+											<additionalArguments>
+												<additionalArgument>-tag "generated:a:Generated class or method."</additionalArgument>
+												<additionalArgument>-tag "model:a:EMF model class or method."</additionalArgument>
+												<additionalArgument>-tag "ordered:a:Ordered collection."</additionalArgument>
+												<additionalArgument>-link http://docs.oracle.com/javase/8/docs/api/</additionalArgument>
+												<additionalArgument>-link http://help.eclipse.org/oxygen/topic/org.eclipse.platform.doc.isv/reference/api/</additionalArgument>
+												<additionalArgument>-link http://download.eclipse.org/modeling/emf/emf/javadoc/2.11/</additionalArgument>
+											</additionalArguments>
+										</javadocOptions>
+									</configuration>
+								</execution>
+							</executions>
+
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 		</profile>
 
 		<!-- OS specific properties -->
