@@ -445,10 +445,48 @@
 									</configuration>
 								</execution>
 							</executions>
-
 						</plugin>
 					</plugins>
 				</pluginManagement>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>checkstyle-analysis</id>
+			<activation>
+				<file>
+					<missing>disableCheckstyleExecution</missing>
+				</file>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-checkstyle-plugin</artifactId>
+							<version>3.0.0</version>
+							<executions>
+								<execution>
+									<id>palladio-checkstyle</id>
+									<phase>package</phase>
+									<goals>
+										<goal>check</goal>
+									</goals>
+									<configuration>
+										<configLocation>https://raw.githubusercontent.com/PalladioSimulator/Palladio-Build-CodingConventions/master/misc/org.palladiosimulator.codeconventions/palladio-checkstyle-rules.xml</configLocation>
+										<failOnViolation>false</failOnViolation>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 
