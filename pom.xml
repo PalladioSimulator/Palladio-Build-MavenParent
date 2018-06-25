@@ -429,6 +429,7 @@
 										<goal>javadoc</goal>
 									</goals>
 									<configuration>
+										<outputDirectory>${project.build.directory}/repository/javadoc</outputDirectory>
 										<exportOnly>false</exportOnly>
 										<skipTocGen>true</skipTocGen>
 										<javadocOptions>
