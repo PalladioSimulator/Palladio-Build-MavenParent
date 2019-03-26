@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>tools.mdsd</groupId>
 		<artifactId>eclipse-parent-updatesite</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
@@ -20,43 +20,6 @@
 	<profiles>
 
 		<profile>
-			<id>local-build</id>
-			<activation>
-				<file>
-					<exists>.maven_local-build</exists>
-				</file>
-			</activation>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-				</snapshotRepository>
-				<repository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-				</repository>
-			</distributionManagement>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
 			<id>palladio-build-customizations</id>
 			<activation>
 				<file>
@@ -64,7 +27,7 @@
 				</file>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>tools.mdsd:eclipse-target-platforms:0.1.0:eclipse-modeling-oxygen-3:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
+				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>tools.mdsd:eclipse-target-platforms:0.1.1:eclipse-modeling-oxygen-3:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
 				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.4:license-2:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
 			</properties>
 			<build>
