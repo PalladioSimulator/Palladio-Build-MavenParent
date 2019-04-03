@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>eclipse-parent-product</artifactId>
-	<version>0.1.4</version>
+	<version>0.1.4-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse product builds of Palladio.</description>
 	<url>http://palladiosimulator.org</url>
