@@ -28,7 +28,7 @@
 			</activation>
 			<properties>
 				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>tools.mdsd:eclipse-target-platforms:0.1.2:eclipse-modeling-oxygen-3:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.4:license-2:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
+				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.5:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
 			</properties>
 			<build>
 				<pluginManagement>
