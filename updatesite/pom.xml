@@ -28,6 +28,7 @@
 			</activation>
 			<properties>
 				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.6:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
+				<checkstyle.version>8.27</checkstyle.version>
 			</properties>
 			<build>
 				<pluginManagement>
@@ -35,7 +36,14 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-checkstyle-plugin</artifactId>
-							<version>3.0.0</version>
+							<version>3.1.0</version>
+							<dependencies>
+								<dependency>
+									<groupId>com.puppycrawl.tools</groupId>
+									<artifactId>checkstyle</artifactId>
+									<version>${checkstyle.version}</version>
+								</dependency>
+							</dependencies>
 							<executions>
 								<execution>
 									<id>palladio-checkstyle</id>
@@ -44,7 +52,7 @@
 										<goal>check</goal>
 									</goals>
 									<configuration>
-										<configLocation>https://raw.githubusercontent.com/PalladioSimulator/Palladio-Build-CodingConventions/master/misc/org.palladiosimulator.codeconventions/palladio-checkstyle-rules.xml</configLocation>
+										<configLocation>https://raw.githubusercontent.com/PalladioSimulator/Palladio-Build-CodingConventions/master/misc/org.palladiosimulator.codeconventions/palladio-checkstyle-rules-${checkstyle.version}.xml</configLocation>
 										<failOnViolation>false</failOnViolation>
 									</configuration>
 								</execution>
