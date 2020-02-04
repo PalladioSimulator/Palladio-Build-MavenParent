@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>tools.mdsd</groupId>
-		<artifactId>eclipse-parent-updatesite</artifactId>
+		<artifactId>eclipse-parent-updatesite-notp</artifactId>
 		<version>0.4.3</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
-	<artifactId>eclipse-parent-updatesite</artifactId>
+	<artifactId>eclipse-parent-updatesite-notp</artifactId>
 	<version>0.4.3-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse Update Site builds of Palladio.</description>
@@ -27,7 +27,6 @@
 				</file>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.6:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
 				<checkstyle.version>8.27</checkstyle.version>
 			</properties>
 			<build>
@@ -67,6 +66,25 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		
+		<profile>
+			<id>default-dependencies</id>
+			<activation>
+				<file>
+					<missing>.maven_disable_default-dependencies</missing>
+				</file>
+			</activation>
+			<properties>
+				<org.palladiosimulator.dependencies.branding-version>2.1.0</org.palladiosimulator.dependencies.branding-version>
+			</properties>
+			<repositories>
+				<repository>
+					<id>palladio-branding</id>
+					<layout>p2</layout>
+					<url>https://updatesite.palladio-simulator.com/palladio-supporting-branding/releases/${org.palladiosimulator.dependencies.branding-version}/</url>
+				</repository>
+			</repositories>
 		</profile>
 
 	</profiles>

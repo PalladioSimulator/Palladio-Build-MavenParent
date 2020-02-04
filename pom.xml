@@ -13,8 +13,9 @@
 	</properties>
 
 	<modules>
-		<module>updatesite</module>
 		<module>product</module>
+		<module>updatesite</module>
+		<module>updatesite-notp</module>
 	</modules>
 
 </project>
