@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>eclipse-parent-updatesite-notp</artifactId>
-	<version>0.4.3-SNAPSHOT</version>
+	<version>0.4.3</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse Update Site builds of Palladio.</description>
 	<url>http://palladiosimulator.org</url>
