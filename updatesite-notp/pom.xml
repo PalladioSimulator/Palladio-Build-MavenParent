@@ -27,7 +27,7 @@
 				</file>
 			</activation>
 			<properties>
-				<checkstyle.version>8.27</checkstyle.version>
+				<checkstyle.version>8.29</checkstyle.version>
 			</properties>
 			<build>
 				<pluginManagement>
