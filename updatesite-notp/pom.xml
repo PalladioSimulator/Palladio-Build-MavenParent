@@ -27,16 +27,14 @@
 			</activation>
 			<repositories>
 				<repository>
-					<id>central</id>
-					<url>https://repo.maven.apache.org/maven2/</url>
-				</repository>
-				<repository>
-					<id>sonatype-staging</id>
-					<url>https://oss.sonatype.org/content/groups/staging/</url>
-				</repository>
-				<repository>
 					<id>sonatype-snapshots</id>
 					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<updatePolicy>never</updatePolicy>
+					</snapshots>
 				</repository>
 			</repositories>
 		</profile>
