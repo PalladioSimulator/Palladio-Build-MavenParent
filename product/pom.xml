@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>tools.mdsd</groupId>
 		<artifactId>eclipse-parent-product</artifactId>
-		<version>0.7.1</version>
+		<version>0.7.2-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
@@ -16,5 +16,30 @@
 	<description>A common parent POM for all Eclipse product builds of Palladio.</description>
 	<url>http://palladiosimulator.org</url>
 	<packaging>pom</packaging>
+	
+	<profiles>
+		<profile>
+			<id>nightly-dependencies</id>
+			<activation>
+				<property>
+					<name>!release</name>
+				</property>
+			</activation>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>https://repo.maven.apache.org/maven2/</url>
+				</repository>
+				<repository>
+					<id>sonatype-staging</id>
+					<url>https://oss.sonatype.org/content/groups/staging/</url>
+				</repository>
+				<repository>
+					<id>sonatype-snapshots</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 
 </project>
