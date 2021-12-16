@@ -12,7 +12,7 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho based
 ## Requirements
 * your project has to have a root POM that is an aggregating POM as well
 * you have to activate the following extensions in the `extensions.xml` in the `.mvn` folder
-  * `org.eclipse.tycho.extras:tycho-pomless:1.7.0`
+  * `org.eclipse.tycho.extras:tycho-pomless:2.5.0`
   * `org.palladiosimulator:tycho-tp-refresh-maven-plugin:0.2.5`
 * you have to refer to the parent POM in your root POM
 
