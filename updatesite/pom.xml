@@ -48,7 +48,7 @@
 			</activation>
 			<properties>
 				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.6:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
-				<checkstyle.version>8.29</checkstyle.version>
+				<checkstyle.version>9.3</checkstyle.version>
 			</properties>
 			<build>
 				<pluginManagement>
