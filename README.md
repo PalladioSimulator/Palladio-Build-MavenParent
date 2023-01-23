@@ -12,7 +12,7 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho based
 ## Requirements
 * your project has to have a root POM that is an aggregating POM as well
 * you have to activate the following extensions in the `extensions.xml` in the `.mvn` folder
-  * `org.eclipse.tycho.extras:tycho-pomless:1.7.0`
+  * `org.eclipse.tycho.extras:tycho-pomless:2.5.0`
   * `org.palladiosimulator:tycho-tp-refresh-maven-plugin:0.2.5`
 * you have to refer to the parent POM in your root POM
 
@@ -25,7 +25,9 @@ You can use additional attributes in the target definition file to filter entrie
 
 To select only a subset of your target definition during a build, you have to add the attribute `filter` to a `location` element and set the value to any name you like. Afterwards, you have to add a property `org.palladiosimulator.maven.tychotprefresh.filter.n` with the name you chose to your root POM. Use different numbers `n` for different filters starting with 2. The parent POM already defines the filters `nightly` and `release` that are activated by activating the `nightly` or `release` profile. The former is activated if the latter is not activated.
 
-To update versions of units mentioned in the target platform, you have to add the attribute `refresh` and set it to `true`. Before the build takes place, the latest versions available in the given location will be used.
+<del>To update versions of units mentioned in the target platform, you have to add the attribute `refresh` and set it to `true`. Before the build takes place, the latest versions available in the given location will be used.</del>
+
+To use the newest available version of units, add 0.0.0 as the version number.
 
 You can always have a look at the generated target platform definition in the `target` folder of your root project.
 
