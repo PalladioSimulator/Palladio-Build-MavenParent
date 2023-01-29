@@ -47,7 +47,7 @@
 				</file>
 			</activation>
 			<properties>
-				<checkstyle.version>8.29</checkstyle.version>
+				<checkstyle.version>9.3</checkstyle.version>
 			</properties>
 			<build>
 				<pluginManagement>
