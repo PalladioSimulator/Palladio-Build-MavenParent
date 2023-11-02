@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>tools.mdsd</groupId>
 		<artifactId>eclipse-parent-updatesite-notp</artifactId>
-		<version>0.8.8</version>
+		<version>0.8.9</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>eclipse-parent-updatesite-notp</artifactId>
-	<version>0.8.8</version>
+	<version>0.8.9</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse Update Site builds of Palladio.</description>
 	<url>http://palladiosimulator.org</url>
