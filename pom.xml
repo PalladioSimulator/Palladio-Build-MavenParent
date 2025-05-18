@@ -13,9 +13,10 @@
 	</properties>
 
 	<modules>
-		<module>product</module>
-		<module>updatesite</module>
-		<module>updatesite-notp</module>
+		<module>eclipse</module>
+		<module>eclipse/product</module>
+		<module>eclipse/updatesite</module>
+		<module>eclipse/updatesite-notp</module>
 	</modules>
 
 </project>

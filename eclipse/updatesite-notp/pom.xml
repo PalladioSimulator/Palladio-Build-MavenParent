@@ -4,20 +4,78 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>tools.mdsd</groupId>
-		<artifactId>eclipse-parent-updatesite</artifactId>
-		<version>0.8.10</version>
+		<groupId>org.palladiosimulator</groupId>
+		<artifactId>eclipse-parent</artifactId>
+		<version>0.8.11-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
-	<artifactId>eclipse-parent-updatesite</artifactId>
-	<version>0.8.10</version>
+	<artifactId>eclipse-parent-updatesite-notp</artifactId>
+	<version>0.8.11-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse Update Site builds of Palladio.</description>
 	<url>http://palladiosimulator.org</url>
 	<packaging>pom</packaging>
 
 	<profiles>
+
+		<profile>
+			<id>updatesite-build</id>
+			<activation>
+				<file>
+					<missing>.maven_disable_updatesite-build</missing>
+				</file>
+			</activation>
+			<properties>
+				<org.palladiosimulator.maven.tychotprefresh.disable>true</org.palladiosimulator.maven.tychotprefresh.disable>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>target-platform-configuration</artifactId>
+							<version>${tycho.version}</version>
+							<configuration>
+								<environments>
+									<environment>
+										<os>linux</os>
+										<ws>gtk</ws>
+										<arch>x86_64</arch>
+									</environment>
+									<environment>
+										<os>linux</os>
+										<ws>gtk</ws>
+										<arch>aarch64</arch>
+									</environment>
+									<environment>
+										<os>win32</os>
+										<ws>win32</ws>
+										<arch>x86_64</arch>
+									</environment>
+									<environment>
+										<os>macosx</os>
+										<ws>cocoa</ws>
+										<arch>x86_64</arch>
+									</environment>
+									<environment>
+										<os>macosx</os>
+										<ws>cocoa</ws>
+										<arch>aarch64</arch>
+									</environment>
+								</environments>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.palladiosimulator</groupId>
+							<artifactId>tycho-tp-refresh-maven-plugin</artifactId>
+							<version>${org.palladiosimulator.maven.tychotprefresh.version}</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
 		<profile>
 			<id>nightly-dependencies</id>
 			<activation>
@@ -47,8 +105,7 @@
 				</file>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.6:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
-				<checkstyle.version>9.3</checkstyle.version>
+				<checkstyle.version>8.29</checkstyle.version>
 			</properties>
 			<build>
 				<pluginManagement>
@@ -87,6 +144,25 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		
+		<profile>
+			<id>default-dependencies</id>
+			<activation>
+				<file>
+					<missing>.maven_disable_default-dependencies</missing>
+				</file>
+			</activation>
+			<properties>
+				<org.palladiosimulator.dependencies.branding-version>2.1.0</org.palladiosimulator.dependencies.branding-version>
+			</properties>
+			<repositories>
+				<repository>
+					<id>palladio-branding</id>
+					<layout>p2</layout>
+					<url>https://updatesite.palladio-simulator.com/palladio-supporting-branding/releases/${org.palladiosimulator.dependencies.branding-version}/</url>
+				</repository>
+			</repositories>
 		</profile>
 
 	</profiles>
