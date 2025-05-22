@@ -25,10 +25,10 @@
 			<organizationUrl>http://kit.edu</organizationUrl>
 		</developer>
 		<developer>
-			<name>Larissa Schmid</name>
-			<email>schmid@kit.edu</email>
-			<organization>Karlsruhe Institute of Technology (KIT), Germany</organization>
-			<organizationUrl>http://kit.edu</organizationUrl>
+			<name>Ralf Sieger</name>
+			<email>sieger@fzi.de</email>
+			<organization>FZI Research Center for Information Technology, Germany</organization>
+			<organizationUrl>http://www.fzi.de</organizationUrl>
 		</developer>
 	</developers>
 
