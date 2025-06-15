@@ -32,40 +32,6 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.eclipse.tycho</groupId>
-							<artifactId>target-platform-configuration</artifactId>
-							<version>${tycho.version}</version>
-							<configuration>
-								<environments>
-									<environment>
-										<os>linux</os>
-										<ws>gtk</ws>
-										<arch>x86_64</arch>
-									</environment>
-									<environment>
-										<os>linux</os>
-										<ws>gtk</ws>
-										<arch>aarch64</arch>
-									</environment>
-									<environment>
-										<os>win32</os>
-										<ws>win32</ws>
-										<arch>x86_64</arch>
-									</environment>
-									<environment>
-										<os>macosx</os>
-										<ws>cocoa</ws>
-										<arch>x86_64</arch>
-									</environment>
-									<environment>
-										<os>macosx</os>
-										<ws>cocoa</ws>
-										<arch>aarch64</arch>
-									</environment>
-								</environments>
-							</configuration>
-						</plugin>
-						<plugin>
 							<groupId>org.palladiosimulator</groupId>
 							<artifactId>tycho-tp-refresh-maven-plugin</artifactId>
 							<version>${org.palladiosimulator.maven.tychotprefresh.version}</version>
@@ -106,28 +72,6 @@
 			</build>
 		</profile>
 
-		<profile>
-			<id>nightly-dependencies</id>
-			<activation>
-				<property>
-					<name>!release</name>
-				</property>
-			</activation>
-			<repositories>
-				<repository>
-					<name>Central Portal Snapshots</name>
-					<id>central-portal-snapshots</id>
-					<url>https://central.sonatype.com/repository/maven-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
-					</snapshots>
-				</repository>
-			</repositories>
-		</profile>
 	</profiles>
 
 </project>
