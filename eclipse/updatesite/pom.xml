@@ -24,14 +24,6 @@
 					<missing>.maven_disable_updatesite-build</missing>
 				</file>
 			</activation>
-			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.0>tools.mdsd:eclipse-target-platforms:0.3.9:eclipse-modeling-2023-03:target</org.palladiosimulator.maven.tychotprefresh.tplocation.0>
-				<org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>${project.groupId}</org.palladiosimulator.maven.tychotprefresh.tpproject.groupId>
-				<org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>target-platform-merged-temporary</org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId>
-				<org.palladiosimulator.maven.tychotprefresh.tpproject.version>1.0.0</org.palladiosimulator.maven.tychotprefresh.tpproject.version>
-				<org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>merged-temporary</org.palladiosimulator.maven.tychotprefresh.tpproject.classifier>
-				<org.palladiosimulator.maven.tychotprefresh.tpproject.type>target</org.palladiosimulator.maven.tychotprefresh.tpproject.type>
-			</properties>
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -40,12 +32,18 @@
 							<artifactId>target-platform-configuration</artifactId>
 							<configuration>
 								<target>
-									<artifact>
-										<groupId>${org.palladiosimulator.maven.tychotprefresh.tpproject.groupId}</groupId>
-										<artifactId>${org.palladiosimulator.maven.tychotprefresh.tpproject.artifactId}</artifactId>
-										<version>${org.palladiosimulator.maven.tychotprefresh.tpproject.version}</version>
-										<classifier>${org.palladiosimulator.maven.tychotprefresh.tpproject.classifier}</classifier> 
-									</artifact>
+									<!-- Using ${maven.multiModuleProjectDirectory} ensures that the target platform is resolved only once
+									for the entire multi-module project, rather than for each submodule individually. This centralized
+									resolution significantly speeds up the build process.
+									
+									Note: ${maven.multiModuleProjectDirectory} will be deprecated in Maven 4 and should be replaced with
+									${project.rootDirectory} when upgrading. For more information, see:
+									https://maven.apache.org/guides/mini/guide-migration-to-mvn4.html#Replace_removed_directory_properties
+									
+									Additionally, in Maven 4, it is highly recommended to explicitly define the project's root directory.
+									For more information, see:
+									https://maven.apache.org/guides/mini/guide-migration-to-mvn4.html#Define_project.27s_root_directory -->
+									<file>${maven.multiModuleProjectDirectory}/${targetPlatform.relativePath}</file>
 								</target>
 								<!-- fixes test execution on Java 11 -->
 								<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=541403 -->
@@ -60,19 +58,6 @@
 								</dependency-resolution>
 							</configuration>
 						</plugin>
-						<plugin>
-							<groupId>org.palladiosimulator</groupId>
-							<artifactId>tycho-tp-refresh-maven-plugin</artifactId>
-							<version>${org.palladiosimulator.maven.tychotprefresh.version}</version>
-							<executions>
-								<execution>
-									<id>target-platform-copy</id>
-									<goals>
-										<goal>copy</goal>
-									</goals>
-								</execution>
-							</executions>
-						</plugin>
 					</plugins>
 				</pluginManagement>
 			</build>
@@ -86,7 +71,6 @@
 				</file>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.tplocation.1>org.palladiosimulator:target-platform-base:0.1.6:license:target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
 				<checkstyle.version>9.3</checkstyle.version>
 			</properties>
 			<build>
