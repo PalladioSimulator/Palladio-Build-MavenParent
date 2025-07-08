@@ -40,7 +40,6 @@
 
 	<properties>
 		<tycho.version>2.7.5</tycho.version>
-		<tycho-javadoc.version>2.2.0</tycho-javadoc.version>
 		<javadoc.args>
 			-tag "generated:a:Generated class or method."
 			-tag "model:a:EMF model class or method."
@@ -247,9 +246,9 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.palladiosimulator</groupId>
+						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-document-bundle-plugin</artifactId>
-						<version>${tycho-javadoc.version}</version>
+						<version>${tycho.version}</version>
 						<executions>
 							<execution>
 								<id>eclipse-javadoc</id>
@@ -259,7 +258,6 @@
 								</goals>
 								<configuration>
 									<outputDirectory>${project.build.directory}/repository/javadoc</outputDirectory>
-									<exportOnly>false</exportOnly>
 									<skipTocGen>true</skipTocGen>
 									<javadocOptions>
 										<additionalArguments>
@@ -288,9 +286,9 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.palladiosimulator</groupId>
+						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-document-bundle-plugin</artifactId>
-						<version>${tycho-javadoc.version}</version>
+						<version>${tycho.version}</version>
 						<executions>
 							<execution>
 								<id>artifact-javadoc</id>
@@ -299,11 +297,8 @@
 									<goal>javadoc</goal>
 								</goals>
 								<configuration>
-									<exportOnly>false</exportOnly>
 									<skipTocGen>true</skipTocGen>
 									<outputDirectory>${project.build.directory}/javadoc</outputDirectory>
-									<considerSourcesOfCurrentProject>true</considerSourcesOfCurrentProject>
-									<considerSourcesOfDependencies>false</considerSourcesOfDependencies>
 									<javadocOptions>
 										<additionalArguments>
 											<additionalArgument>${javadoc.args}</additionalArgument>
