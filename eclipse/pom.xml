@@ -41,7 +41,6 @@
 	<properties>
 		<tycho.version>2.7.5</tycho.version>
 		<tycho-javadoc.version>2.2.0</tycho-javadoc.version>
-		<org.palladiosimulator.maven.tychotprefresh.version>0.2.6</org.palladiosimulator.maven.tychotprefresh.version>
 		<javadoc.args>
 			-tag "generated:a:Generated class or method."
 			-tag "model:a:EMF model class or method."
@@ -123,7 +122,6 @@
 				</property>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.filter.0>nightly</org.palladiosimulator.maven.tychotprefresh.filter.0>
 				<updatesite.aggregator.filename>target/classes/nightly.aggr</updatesite.aggregator.filename>
 			</properties>
 
@@ -178,11 +176,9 @@
 				</property>
 			</activation>
 			<properties>
-				<org.palladiosimulator.maven.tychotprefresh.filter.0>release</org.palladiosimulator.maven.tychotprefresh.filter.0>
 				<updatesite.aggregator.filename>target/classes/release.aggr</updatesite.aggregator.filename>
 			</properties>
 		</profile>
-
 
 		<profile>
 			<id>default-plugin-usage</id>
@@ -197,10 +193,6 @@
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>target-platform-configuration</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.palladiosimulator</groupId>
-						<artifactId>tycho-tp-refresh-maven-plugin</artifactId>
 					</plugin>
 
 					<!-- Build (general) -->
