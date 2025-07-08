@@ -123,48 +123,6 @@
 			<properties>
 				<updatesite.aggregator.filename>target/classes/nightly.aggr</updatesite.aggregator.filename>
 			</properties>
-
-			<repositories>
-				<repository>
-					<name>Central Portal Snapshots</name>
-					<id>central-portal-snapshots</id>
-					<url>https://central.sonatype.com/repository/maven-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
-					</snapshots>
-				</repository>
-			</repositories>
-
-			<pluginRepositories>
-				<pluginRepository>
-					<name>Central Portal Snapshots</name>
-					<id>central-portal-snapshots</id>
-					<url>https://central.sonatype.com/repository/maven-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
-					</snapshots>
-				 </pluginRepository>
-				 <pluginRepository>
-				 	<name>Tycho Snapshots</name>
-					<id>tycho-snapshots</id>
-					<url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
-					</snapshots>
-				 </pluginRepository>
-			 </pluginRepositories>
 		</profile>
 
 		<profile>
