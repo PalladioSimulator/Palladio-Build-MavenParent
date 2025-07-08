@@ -719,31 +719,6 @@
 							<executionEnvironment>JavaSE-17</executionEnvironment>
 						</configuration>
 					</plugin>
-					<plugin>
-						<groupId>tools.mdsd</groupId>
-						<artifactId>pom-enhancer-maven-plugin</artifactId>
-						<version>0.1.1</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>enhance-pom</goal>
-								</goals>
-								<phase>package</phase>
-							</execution>
-						</executions>
-						<configuration>
-							<scanDir>
-								<fileSet>
-									<directory>${project.build.directory}/m2/final/</directory>
-									<includes>
-										<include>**/*.pom</include>
-									</includes>
-								</fileSet>
-							</scanDir>
-							<pomTemplate>${maven.multiModuleProjectDirectory}/pom.xml</pomTemplate>
-							<requiredFields>description,scm,licenses,name,url,developers</requiredFields>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
