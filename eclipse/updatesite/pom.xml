@@ -45,17 +45,6 @@
 									https://maven.apache.org/guides/mini/guide-migration-to-mvn4.html#Define_project.27s_root_directory -->
 									<file>${maven.multiModuleProjectDirectory}/${targetPlatform.relativePath}</file>
 								</target>
-								<!-- fixes test execution on Java 11 -->
-								<!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=541403 -->
-								<dependency-resolution>
-									<extraRequirements>
-										<requirement>
-											<type>eclipse-plugin</type>
-											<id>javax.annotation</id>
-											<versionRange>0.0.0</versionRange>
-										</requirement>
-									</extraRequirements>
-								</dependency-resolution>
 							</configuration>
 						</plugin>
 					</plugins>
