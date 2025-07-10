@@ -15,6 +15,10 @@
 	<url>http://palladiosimulator.org</url>
 	<packaging>pom</packaging>
 
+	<properties>
+		<updatesite.aggregator.smtpHost>smtp.ira.uka.de</updatesite.aggregator.smtpHost>
+	</properties>
+
 	<profiles>
 
 		<profile>

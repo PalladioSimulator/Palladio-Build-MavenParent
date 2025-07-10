@@ -59,7 +59,6 @@
 		<javadoc.additional.args>
 			-link ${java.api.doc}
 		</javadoc.additional.args>
-		<updatesite.aggregator.smtpHost>smtp.ira.uka.de</updatesite.aggregator.smtpHost>
 	</properties>
 	
 	<build>
@@ -522,8 +521,7 @@
 									</arguments>
 									<classpathScope>compile</classpathScope>
 									<includePluginDependencies>true</includePluginDependencies>
-									<cleanupDaemonThreads>false
-									</cleanupDaemonThreads> <!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
+									<cleanupDaemonThreads>false</cleanupDaemonThreads> <!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 								</configuration>
 							</execution>
 						</executions>
