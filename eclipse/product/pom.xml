@@ -12,7 +12,7 @@
 	<artifactId>eclipse-parent-product</artifactId>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse product builds of Palladio.</description>
-	<url>http://palladiosimulator.org</url>
+	<url>https://palladio-simulator.com</url>
 	<packaging>pom</packaging>
 	
 	<profiles>
