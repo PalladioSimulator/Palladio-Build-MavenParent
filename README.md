@@ -9,23 +9,48 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho-based
 * Checkstyle generation
 
 ## Requirements
-* Your project must have a root POM that is an aggregating POM as well
-* You have to activate the extension `org.eclipse.tycho:tycho-build:2.7.5` in the `.mvn/extensions.xml` file
-* You have to refer to this parent POM in your root POM
+* You have to activate the extension `org.eclipse.tycho:tycho-build:2.7.5` in the `.mvn/extensions.xml` file by adding:
+
+  ```xml
+  <extensions>
+      <extension>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-build</artifactId>
+          <version>2.7.5</version>
+      </extension>
+  </extensions>
+  ```
+
+* Your project must have a root POM that serves as an aggregating POM for all your project modules (e.g., releng, bundles, features, tests). This root POM must refer to the `eclipse-parent-updatesite` as its parent POM by adding:  
+
+  ```xml
+  <parent>
+      <groupId>org.palladiosimulator</groupId>
+      <artifactId>eclipse-parent-updatesite</artifactId>
+      <version>0.10.0</version>
+  </parent>
+  ```
+
+* If you need a module-specific POM (e.g., for a bundle), it must refer to your project's root POM as its parent.
 
 ## Target Platform
-You need to define your target platform explicitly by creating a `.target` file that references one of the shared Palladio base target platforms. For detailed instructions on how to do this and see which target platforms are available, please follow the [Usage section of Palladio-Build-TargetPlatforms](https://github.com/PalladioSimulator/Palladio-Build-TargetPlatforms?tab=readme-ov-file#usage). To use the newest available version of units, add `0.0.0` as the version number. Starting with Tycho 4.0.10, it is also possible to omit the version entirely, which is equivalent to `0.0.0`.  
+You need to define your target platform explicitly by creating a `.target` file (the recommended name is `tp.target`) that references one of the shared Palladio base target platforms. For detailed instructions on how to do this and see which target platforms are available, please follow the [Usage section of Palladio-Build-TargetPlatforms](https://github.com/PalladioSimulator/Palladio-Build-TargetPlatforms?tab=readme-ov-file#usage). To use the newest available version of units, add `0.0.0` as the version number. Starting with Tycho 4.0.10, it is also possible to omit the version entirely, which is equivalent to `0.0.0`.  
 Once you have created your `.target` file, you must tell the build system where to find it. This is done by defining a property `targetPlatform.relativePath` in your root POM and setting its value to the relative path from your project's root directory to your `.target` file. For example, given the following project structure:
 
 ```
 Palladio-Example-Project/
-├── .mvn/
-│   └── extensions.xml
-├── releng/
+├── pom.xml                       <-- Your root POM
+├── releng/                       (contains helper projects and the update site project)
 │   ├── org.palladiosimulator.example.targetplatform/
 │   │   └── tp.target             <-- Your .target file
+│   ├── org.palladiosimulator.example.updatesite/
+│   │   └── category.xml
 │   └── ...
-├── pom.xml                       <-- Your root POM
+├── bundles/                      (contains all plugin projects)
+├── features/                     (contains all feature projects)
+├── tests/                        (contains all test projects)
+├── .mvn/
+│   └── extensions.xml
 └── ...
 ```
 
