@@ -15,6 +15,29 @@
 	<url>https://palladio-simulator.com</url>
 	<packaging>pom</packaging>
 
+	<properties>
+		<java.api.doc>https://docs.oracle.com/en/java/javase/17/docs/api/</java.api.doc>
+		<javadoc.args>
+			-tag "generated:a:Generated class or method."
+			-tag "model:a:EMF model class or method."
+			-tag "ordered:a:Ordered collection."
+			-tag 'noimplement:a:Restriction:'
+			-tag 'noextend:a:Restriction:'
+			-tag 'noreference:a:Restriction:'
+			-tag 'noinstantiate:a:Restriction:'
+			-tag 'nooverride:a:Restriction:'
+			-tag 'category:a:Category:'
+			-link ${java.api.doc}
+			-link https://help.eclipse.org/2022-12/topic/org.eclipse.platform.doc.isv/reference/api
+			-link https://download.eclipse.org/modeling/emf/emf/javadoc/2.11/
+			-link https://download.eclipse.org/modeling/emft/mwe/javadoc/2.9/
+		</javadoc.args>
+		<!-- The property is meant to be overridden but still has to contain valid content, so we just repeat valid content. -->
+		<javadoc.additional.args>
+			-link ${java.api.doc}
+		</javadoc.additional.args>
+	</properties>
+
 	<profiles>
 
 		<profile>

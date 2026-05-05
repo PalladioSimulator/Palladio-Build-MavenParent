@@ -40,25 +40,6 @@
 
 	<properties>
 		<tycho.version>2.7.5</tycho.version>
-		<javadoc.args>
-			-tag "generated:a:Generated class or method."
-			-tag "model:a:EMF model class or method."
-			-tag "ordered:a:Ordered collection."
-			-tag 'noimplement:a:Restriction:'
-			-tag 'noextend:a:Restriction:'
-			-tag 'noreference:a:Restriction:'
-			-tag 'noinstantiate:a:Restriction:'
-			-tag 'nooverride:a:Restriction:'
-			-tag 'category:a:Category:'
-			-link ${java.api.doc}
-			-link https://help.eclipse.org/2022-12/topic/org.eclipse.platform.doc.isv/reference/api
-			-link https://download.eclipse.org/modeling/emf/emf/javadoc/2.11/
-			-link https://download.eclipse.org/modeling/emft/mwe/javadoc/2.9/
-		</javadoc.args>
-		<!-- The property is meant to be overridden but still has to contain valid content, so we just repeat valid content. -->
-		<javadoc.additional.args>
-			-link ${java.api.doc}
-		</javadoc.additional.args>
 	</properties>
 	
 	<build>
@@ -196,7 +177,6 @@
 				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 				<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 				<java.version>17</java.version>
-				<java.api.doc>https://docs.oracle.com/en/java/javase/17/docs/api/</java.api.doc>
 				<maven.compiler.target>${java.version}</maven.compiler.target>
 				<maven.compiler.source>${java.version}</maven.compiler.source>
 			</properties>
