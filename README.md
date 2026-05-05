@@ -64,3 +64,5 @@ Then you would configure the `targetPlatform.relativePath` property in your root
 
 ## Update site / JavaDoc
 To define an update site, you have to create a POM with packaging type `eclipse-repository` and place a `category.xml` besides it. You can edit this file using the default Eclipse editors. The resulting update site will be placed in `target/repository`. The JavaDoc files will be placed in a `javadoc` folder inside the repository.
+
+The generation of update site JavaDoc is opt-in. Set the `generateJavaDocForUpdatesite` property for release builds, or whenever update site JavaDoc needs to be generated.
