@@ -16,7 +16,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<java.api.doc>https://docs.oracle.com/en/java/javase/17/docs/api/</java.api.doc>
+		<java.api.doc>https://docs.oracle.com/en/java/javase/${java.version}/docs/api/</java.api.doc>
 		<javadoc.args>
 			-tag "generated:a:Generated class or method."
 			-tag "model:a:EMF model class or method."

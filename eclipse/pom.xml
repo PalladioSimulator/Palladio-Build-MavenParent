@@ -270,7 +270,7 @@
 									</goals>
 									<configuration>
 										<outputDirectory>xtend-gen</outputDirectory>
-										<javaSourceVersion>17</javaSourceVersion>
+										<javaSourceVersion>${java.version}</javaSourceVersion>
 									</configuration>
 								</execution>
 							</executions>
