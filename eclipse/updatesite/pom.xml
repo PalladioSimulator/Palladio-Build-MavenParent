@@ -130,6 +130,9 @@
 				<file>
 					<exists>category.xml</exists>
 				</file>
+				<property>
+					<name>generateJavaDocForUpdatesite</name>
+				</property>
 			</activation>
 			<build>
 				<plugins>
