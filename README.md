@@ -28,6 +28,7 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho-based
       <groupId>org.palladiosimulator</groupId>
       <artifactId>eclipse-parent-updatesite</artifactId>
       <version>0.10.0</version>
+      <relativePath/>
   </parent>
   ```
 
