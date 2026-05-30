@@ -9,14 +9,14 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho-based
 * Checkstyle generation
 
 ## Requirements
-* You have to activate the extension `org.eclipse.tycho:tycho-build:2.7.5` in the `.mvn/extensions.xml` file by adding:
+* You have to activate the extension `org.eclipse.tycho:tycho-build:4.0.13` in the `.mvn/extensions.xml` file by adding:
 
   ```xml
   <extensions>
       <extension>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-build</artifactId>
-          <version>2.7.5</version>
+          <version>4.0.13</version>
       </extension>
   </extensions>
   ```
