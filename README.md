@@ -1,6 +1,6 @@
 # Palladio-Build-MavenParent
 
-Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho-based Palladio builds with little effort. This parent POM covers:
+Using the `repository-parent` base POM, you can define Maven Tycho-based Palladio builds with little effort. This parent POM covers:
 * Compilation of Java and Xtend code
 * Building of plugins and features
 * Building of source plugins and source features
@@ -21,13 +21,13 @@ Using the `eclipse-parent-updatesite` base POM, you can define Maven Tycho-based
   </extensions>
   ```
 
-* Your project must have a root POM that serves as an aggregating POM for all your project modules (e.g., releng, bundles, features, tests). This root POM must refer to the `eclipse-parent-updatesite` as its parent POM by adding:  
+* Your project must have a root POM that serves as an aggregating POM for all your project modules (e.g., releng, bundles, features, tests). This root POM must refer to the `repository-parent` as its parent POM by adding:  
 
   ```xml
   <parent>
       <groupId>org.palladiosimulator</groupId>
-      <artifactId>eclipse-parent-updatesite</artifactId>
-      <version>0.10.0</version>
+      <artifactId>repository-parent</artifactId>
+      <version>0.11.0</version>
       <relativePath/>
   </parent>
   ```
