@@ -14,7 +14,7 @@
 
 	<modules>
 		<module>eclipse</module>
-		<module>eclipse/updatesite</module>
+		<module>eclipse/repository</module>
 	</modules>
 
 </project>
