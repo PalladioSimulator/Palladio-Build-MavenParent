@@ -72,4 +72,4 @@ JavaDoc generation is opt-in. Depending on your needs, you can enable it by sett
 
 ## Further Information
 
-For more documentation on the Maven-based Palladio build — including an overview of the available parent POMs and how to release new versions — please refer to the [Maven-based Build wiki](https://github.com/PalladioSimulator/.github/wiki/Maven-based-Build) page.
+For more documentation on the Maven-based Palladio build – including the inheritance hierarchy of the parent POMs and how they are used by different repositories, as well as how to release new versions – please refer to the [Maven-based Build wiki](https://github.com/PalladioSimulator/.github/wiki/Maven-based-Build) page.
