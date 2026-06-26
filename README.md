@@ -69,3 +69,7 @@ To define an update site, you have to create a POM with packaging type `eclipse-
 JavaDoc generation is opt-in. Depending on your needs, you can enable it by setting the following properties:
 * `generateJavaDocForUpdatesite`: Generate update site JavaDoc (typically used for release builds). The JavaDoc files will be placed in `target/repository/javadoc`.
 * `generateJavaDocPerBundle`: Generate bundle-specific JavaDoc in each bundle's `target/javadoc` folder and package it as a JavaDoc archive (`-javadoc.jar`) in each bundle's `target` folder.
+
+## Further Information
+
+For more documentation on the Maven-based Palladio build — including an overview of the available parent POMs and how to release new versions — please refer to the [Maven-based Build wiki](https://github.com/PalladioSimulator/.github/wiki/Maven-based-Build) page.
