@@ -16,6 +16,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<!-- Keep in sync with the Dagger version the target platforms provide. -->
+		<dagger.version>2.60.1</dagger.version>
 		<java.api.doc>https://docs.oracle.com/en/java/javase/${java.version}/docs/api/</java.api.doc>
 		<javadoc.args>
 			-tag "generated:a:Generated class or method."
@@ -85,6 +87,8 @@
 			<properties>
 				<checkstyle.version>9.3</checkstyle.version>
 			</properties>
+			<!-- dagger.version is declared at the top of this POM so that the target platforms
+			     of the consuming repositories can be kept in sync with the annotation processor. -->
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -325,7 +329,8 @@
 										<annotationProcessorPath>
 											<groupId>com.google.dagger</groupId>
 											<artifactId>dagger-compiler</artifactId>
-											<version>2.31</version>
+											<!-- 2.52+ recognises jakarta.inject annotations; 2.31 only understood javax.inject. -->
+											<version>${dagger.version}</version>
 										</annotationProcessorPath>
 									</annotationProcessorPaths>
 									<proc>only</proc>
