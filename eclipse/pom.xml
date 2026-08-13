@@ -262,7 +262,10 @@
 						<plugin>
 							<groupId>org.eclipse.xtend</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
-							<version>2.39.0</version>
+							<!-- Keep in lockstep with the Xtext version the shared target platform
+							     provides: two Xtext generations in one build leave the generator
+							     with an uninjected CodeConfig and the MWE2 workflow fails. -->
+							<version>2.41.0</version>
 							<executions>
 								<execution>
 									<goals>
