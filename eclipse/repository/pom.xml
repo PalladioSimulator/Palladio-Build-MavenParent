@@ -329,7 +329,8 @@
 										<annotationProcessorPath>
 											<groupId>com.google.dagger</groupId>
 											<artifactId>dagger-compiler</artifactId>
-											<!-- 2.52+ recognises jakarta.inject annotations; 2.31 only understood javax.inject. -->
+											<!-- Must be at least 2.52: earlier compilers do not process
+											     jakarta.inject annotations. -->
 											<version>${dagger.version}</version>
 										</annotationProcessorPath>
 									</annotationProcessorPaths>
