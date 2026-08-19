@@ -8,6 +8,14 @@ Using the `repository-parent` base POM, you can define Maven Tycho-based Palladi
 * API documentation using JavaDoc
 * Checkstyle generation
 
+## Parent POM Hierarchy
+
+The parent POMs in this repository form an inheritance hierarchy. `eclipse-parent` is the common base. `repository-parent` extends it and is what most Palladio repositories inherit from. Only [Palladio-Bench-Product](https://github.com/PalladioSimulator/Palladio-Bench-Product) and [Palladio-Build-UpdateSite](https://github.com/PalladioSimulator/Palladio-Build-UpdateSite) inherit from `eclipse-parent` directly.
+
+![Parent POM Hierarchy](figures/pom-hierarchy.svg)
+
+Dashed arrows in the diagram show target platform usage. Each repository defines a repository-specific `.target` file, which in turn references one of the shared Palladio target platforms from [Palladio-Build-TargetPlatforms](https://github.com/PalladioSimulator/Palladio-Build-TargetPlatforms). See [Target Platform](#target-platform) for how to configure this.
+
 ## Requirements
 * You have to activate the extension `org.eclipse.tycho:tycho-build:4.0.13` in the `.mvn/extensions.xml` file by adding:
 
@@ -70,6 +78,14 @@ JavaDoc generation is opt-in. Depending on your needs, you can enable it by sett
 * `generateJavaDocForUpdatesite`: Generate update site JavaDoc (typically used for release builds). The JavaDoc files will be placed in `target/repository/javadoc`.
 * `generateJavaDocPerBundle`: Generate bundle-specific JavaDoc in each bundle's `target/javadoc` folder and package it as a JavaDoc archive (`-javadoc.jar`) in each bundle's `target` folder.
 
-## Further Information
+## Release New Versions
 
-For more documentation on the Maven-based Palladio build – including the inheritance hierarchy of the parent POMs and how they are used by different repositories, as well as how to release new versions – please refer to the [Maven-based Build wiki](https://github.com/PalladioSimulator/.github/wiki/Maven-based-Build) page.
+Before you start, coordinate the release with the [build team](https://github.com/orgs/PalladioSimulator/teams/pcm-build).
+
+1. Remove the `-SNAPSHOT` suffix from the `eclipse-parent` version in [`eclipse/pom.xml`](eclipse/pom.xml) and [`eclipse/repository/pom.xml`](eclipse/repository/pom.xml).  
+   For example, change `<version>0.7.4-SNAPSHOT</version>` to `<version>0.7.4</version>`.
+1. Create a temporary branch, commit the changes, and push the branch to GitHub.
+1. Use the existing GitHub Action ["Release to Sonatype"](https://github.com/PalladioSimulator/Palladio-Build-MavenParent/actions/workflows/release.yml) on the temporary branch to fully release the new version on [Sonatype](https://central.sonatype.com/). This typically takes 5 to 15 minutes. Do not continue until the Action has succeeded.
+1. In all files from step 1, increment the `eclipse-parent` version and add the `-SNAPSHOT` suffix to prepare for the next development cycle.  
+   For example, update `<version>0.7.4</version>` to `<version>0.7.5-SNAPSHOT</version>`.
+1. Commit to the temporary branch, push to GitHub, create pull request, and have it approved.
