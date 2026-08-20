@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.palladiosimulator</groupId>
 		<artifactId>eclipse-parent</artifactId>
-		<version>0.11.1-SNAPSHOT</version>
+		<version>0.12.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>repository-parent</artifactId>
@@ -16,6 +16,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<!-- Keep in sync with the Dagger version the target platforms provide. -->
+		<dagger.version>2.60.1</dagger.version>
 		<java.api.doc>https://docs.oracle.com/en/java/javase/${java.version}/docs/api/</java.api.doc>
 		<javadoc.args>
 			-tag "generated:a:Generated class or method."
@@ -58,12 +60,12 @@
 									<!-- Using ${maven.multiModuleProjectDirectory} ensures that the target platform is resolved only once
 									for the entire multi-module project, rather than for each submodule individually. This centralized
 									resolution significantly speeds up the build process.
-									
+
 									Note: ${maven.multiModuleProjectDirectory} will be deprecated in Maven 4 and should be replaced with
 									${project.rootDirectory} when upgrading. For more information, see:
 									https://maven.apache.org/guides/mini/guide-migration-to-mvn4.html#Replace_removed_directory_properties
-									
-									Additionally, in Maven 4, it is highly recommended to explicitly define the project's root directory.
+
+									Additionally, in Maven 4, it is highly recommended to explicitly define the project's root directory. We should be doing this already for our repos.
 									For more information, see:
 									https://maven.apache.org/guides/mini/guide-migration-to-mvn4.html#Define_project.27s_root_directory -->
 									<file>${maven.multiModuleProjectDirectory}/${targetPlatform.relativePath}</file>
@@ -85,6 +87,8 @@
 			<properties>
 				<checkstyle.version>9.3</checkstyle.version>
 			</properties>
+			<!-- dagger.version is declared at the top of this POM so that the target platforms
+			     of the consuming repositories can be kept in sync with the annotation processor. -->
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -325,7 +329,9 @@
 										<annotationProcessorPath>
 											<groupId>com.google.dagger</groupId>
 											<artifactId>dagger-compiler</artifactId>
-											<version>2.31</version>
+											<!-- Must be at least 2.52: earlier compilers do not process
+											     jakarta.inject annotations. -->
+											<version>${dagger.version}</version>
 										</annotationProcessorPath>
 									</annotationProcessorPaths>
 									<proc>only</proc>

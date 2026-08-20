@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.palladiosimulator</groupId>
 	<artifactId>eclipse-parent</artifactId>
-	<version>0.11.1-SNAPSHOT</version>
+	<version>0.12.1-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>A common parent POM for all Eclipse builds of Palladio.</description>
 	<url>https://palladio-simulator.com</url>
@@ -40,6 +40,12 @@
 
 	<properties>
 		<tycho.version>4.0.13</tycho.version>
+		<!-- Xtext and MWE2 as the shared target platform provides them. Repositories must not
+		     name a version of their own: two Xtext generations in one build leave the generator
+		     with an uninjected CodeConfig, and an Xtext tool older than the JDK cannot read the
+		     bytecode it is asked to analyse. -->
+		<xtext.version>2.41.0</xtext.version>
+		<mwe2.version>2.24.0</mwe2.version>
 	</properties>
 	
 	<build>
@@ -176,7 +182,7 @@
 			<properties>
 				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 				<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-				<java.version>17</java.version>
+				<java.version>21</java.version>
 				<maven.compiler.target>${java.version}</maven.compiler.target>
 				<maven.compiler.source>${java.version}</maven.compiler.source>
 			</properties>
@@ -262,7 +268,7 @@
 						<plugin>
 							<groupId>org.eclipse.xtend</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
-							<version>2.39.0</version>
+							<version>${xtext.version}</version>
 							<executions>
 								<execution>
 									<goals>
@@ -274,6 +280,17 @@
 									</configuration>
 								</execution>
 							</executions>
+						</plugin>
+
+						<!-- Only a few repositories generate an Xtext language, but those that do
+						     used to name the version themselves and drifted apart: 2.29 and 2.32
+						     were still in use while the platform had moved to 2.41, and an Xtext
+						     tool that old cannot read Java 21 bytecode. Managing it here means a
+						     repository declares the plugin without a version. -->
+						<plugin>
+							<groupId>org.eclipse.xtext</groupId>
+							<artifactId>xtext-maven-plugin</artifactId>
+							<version>${xtext.version}</version>
 						</plugin>
 
 						<plugin>

@@ -27,7 +27,7 @@ Using the `repository-parent` base POM, you can define Maven Tycho-based Palladi
   <parent>
       <groupId>org.palladiosimulator</groupId>
       <artifactId>repository-parent</artifactId>
-      <version>0.11.0</version>
+      <version>0.12.0</version>
       <relativePath/>
   </parent>
   ```
